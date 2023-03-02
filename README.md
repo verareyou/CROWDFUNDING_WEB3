@@ -1,2 +1,2 @@
-# Kickstarter / Crowdfunding Platform with vite + react + web3 + solidity + hardhat + ethers + tailwindcss
-[...]
+# Kickstarter / Crowdfunding Platform
+STACK - vite + react + web3 + solidity + hardhat + ethers + tailwindcss
