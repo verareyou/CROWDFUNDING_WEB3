@@ -43,11 +43,27 @@ export const navlinks = [
   },
 ];
 
-export const Colors = {
-  primary: "#131318",
-  secondary: "#1b1b23b6",
+const Color = {
+  primary: "#131313",
+  secondary: "#191919",
+  selected: "#28282a",
+  hover: "#F2F2F2",
+  white: "white",
+  black: "#000",
+  gray: "#333",
+  lightGray: "#666",
+  text: "#fff",
+};
+const Colord = {
+  primary: "#fff",
+  secondary: "#e5e5e5",
+  selected: "#28282",
+  hover: "#F2F2F2",
   white: "#fff",
   black: "#000",
-  gray: "#9B9B9B",
-  lightGray: "#F2F2F2",
+  gray: "#a5a5a5",
+  lightGray: "#373737",
+  text: "#000",
 };
+
+export const Colors = Color;

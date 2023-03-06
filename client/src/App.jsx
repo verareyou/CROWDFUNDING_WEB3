@@ -6,7 +6,8 @@ import { Colors } from "./constants";
 
 const App = () => {
   return (
-    <div style={{background: Colors.primary}} className="relative text-white sm:-8 p-4 min-h-screen flex flex-row ">
+    <div style={{background: Colors.primary,
+    color: Colors.text}} className="relative text-white sm:-8 p-4 min-h-screen flex flex-row ">
       <div className="sidebar sm:flex hidden relative mr-10 ">
         <Sidebar />
       </div>
