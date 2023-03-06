@@ -2,10 +2,11 @@ import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
 import { CampaignDetails, CreateCampaign, Home, Profile } from "./pages";
+import { Colors } from "./constants";
 
 const App = () => {
   return (
-    <div className="relative text-white sm:-8 p-4 bg-[#13131a] min-h-screen flex flex-row ">
+    <div style={{background: Colors.primary}} className="relative text-white sm:-8 p-4 min-h-screen flex flex-row ">
       <div className="sidebar sm:flex hidden relative mr-10 ">
         <Sidebar />
       </div>

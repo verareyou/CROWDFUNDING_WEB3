@@ -42,3 +42,12 @@ export const navlinks = [
     disabled: true,
   },
 ];
+
+export const Colors = {
+  primary: "#131318",
+  secondary: "#1b1b23b6",
+  white: "#fff",
+  black: "#000",
+  gray: "#9B9B9B",
+  lightGray: "#F2F2F2",
+};
