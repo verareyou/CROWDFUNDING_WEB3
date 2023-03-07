@@ -43,7 +43,7 @@ export const navlinks = [
   },
 ];
 
-const Color = {
+export const dark = {
   primary: "#131313",
   secondary: "#191919",
   selected: "#28282a",
@@ -54,7 +54,7 @@ const Color = {
   lightGray: "#666",
   text: "#fff",
 };
-const Colord = {
+export const light = {
   primary: "#fff",
   secondary: "#e5e5e5",
   selected: "#28282",
@@ -66,4 +66,4 @@ const Colord = {
   text: "#000",
 };
 
-export const Colors = Color;
+export const Colors = dark;
