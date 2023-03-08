@@ -1,18 +1,34 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { CustomBtn } from "./";
 import { logo, menu, search, thirdweb } from "../assets";
 import { Colors, navlinks } from "../constants";
+import { useStateContext } from "../context";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState(false);
-  const [toogleDrawer, setToogleDrawer] = useState(false);
-  const [address, setAddress] = useState("");
+  const [isActive, setIsActive] = useState("dashboard");
+  const [toggleDrawer, setToggleDrawer] = useState(false);
+  // const [address, setAddress] = useState("");
+  const { connect, address } = useStateContext();
+
+  React.useEffect(() => {
+    const url = window.location.href;
+    const urlArr = url.split("/");
+    const lastUrl = urlArr[urlArr.length - 1];
+    const final = lastUrl === "" ? "dashboard" : lastUrl;
+    console.log(final);
+    setIsActive(final);
+  }, [window.location.href]);
 
   return (
-    <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6 ">
+    <div
+      className={
+        "flex sm:flex-row flex-col-reverse mb-[35px] gap-6 justify-between"
+      }
+   >
+    
       <div
         style={{ background: Colors.secondary }}
         className={` lg:flex-1 flex flex-row max-w-[458px] h-[52px] rounded-[100px] pl-6 pr-3 py-2 `}
@@ -39,17 +55,17 @@ const Navbar = () => {
             if (address) {
               navigate("create-campaign");
             } else {
-              ("connectWallet()");
+              connect();
             }
           }}
         />
         <Link>
           <div
             style={{ background: Colors.secondary }}
-            className=" h-[52px] w-[52px] rounded-full flex justify-center items-center cursor-pointer "
+            className=" h-[40px] w-[40px] rounded-full flex justify-center items-center cursor-pointer "
           >
             <img
-              src={thirdweb}
+              src={logo}
               alt="user"
               className=" w-[60%] h-[60%] object-contain "
             />
@@ -57,6 +73,87 @@ const Navbar = () => {
         </Link>
       </div>
       {/* small screen navigation */}
+
+      <div className=" sm:hidden flex justify-between items-center relative ">
+        <div
+          style={{ background: Colors.secondary }}
+          className=" h-[52px] w-[52px] rounded-full flex justify-center items-center cursor-pointer "
+        >
+          <img
+            src={thirdweb}
+            onClick={() => {
+              // navigate("Profile");
+              setIsActive("profile");
+            }}
+            alt="user"
+            className=" w-[60%] h-[60%] object-contain "
+          />
+        </div>
+        <img
+          src={menu}
+          alt="menu"
+          className="w-[34px] h-[34px] object-contain cursor-pointer"
+          onClick={() => {
+            setToggleDrawer((prev) => !prev);
+          }}
+        />
+        <div
+          style={{ background: Colors.trans, backdropFilter: "blur(8px)" }}
+          className={`fixed top-[60px] right-0 left-0 shadow-sm rounded-lg mt-6 bottom-0 py-4 ${
+            toggleDrawer
+              ? "translate-y-0 "
+              : `translate-y-[110vh] blur-lg 
+             `
+          } duration-200 `}
+        >
+          <ul className="mb-4">
+            {navlinks.map((link) => (
+              <li
+                key={link.name}
+                style={{
+                  background: isActive === link.name && Colors.selected + "80%",
+                }}
+                className={` flex p-4  `}
+                onClick={() => {
+                  setIsActive(link.name);
+                  setToggleDrawer(false);
+                  navigate(link.link);
+                }}
+              >
+                <img
+                  src={link.imgUrl}
+                  alt={link.name}
+                  className={`w-[24px] h-[24px] object-contain ${
+                    isActive === link.name ? "grayscale-0" : "grayscale"
+                  }`}
+                />
+                <p
+                  className={`ml-[20px] font-epilogue font-semibold text-[14px] ${
+                    isActive === link.name ? "text-[#1dc071]" : "text-[#808191]"
+                  }`}
+                >
+                  {link.name}
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          <CustomBtn
+            btnType="button"
+            title={address ? "Create a campaign" : "Connect Wallet"}
+            styles={`font-epilogue font-semibold text-[14px] rounded-full relative left-1/2 transform -translate-x-1/2
+            ${address ? "bg-[#4acd78] " : "bg-[#4acd78] "}
+          `}
+            handleClick={() => {
+              if (address) {
+                navigate("create-campaign");
+              } else {
+                ("connectWallet()");
+              }
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
