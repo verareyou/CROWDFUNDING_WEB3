@@ -1,6 +1,7 @@
 import React from 'react'
 
 const CustomBtn = ({title, styles, btnType}) => {
+  // console.log(btnType)
   return (
     <button
       type={btnType}
