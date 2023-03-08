@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div
       style={{ background: Colors.primary, color: Colors.text }}
-      className="relative text-white sm:-8 p-4 min-h-screen flex flex-row "
+      className="relative text-white sm:-8 duration-200 p-4 min-h-screen flex flex-row "
     >
       <div className="sidebar sm:flex hidden relative mr-10 ">
         <Sidebar />
@@ -19,7 +19,7 @@ const App = () => {
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="Profile" element={<Profile />} />
-          <Route path="create-campaign" element={<CreateCampaign />} />
+          <Route path="campaign" element={<CreateCampaign />} />
           <Route path="campaign-details/:id" element={<CampaignDetails />} />
         </Routes>
       </div>

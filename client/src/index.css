@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: 'Epilogue', sans-serif;
+}
+
 .linear-gradient {
   background: linear-gradient(
     179.14deg,
