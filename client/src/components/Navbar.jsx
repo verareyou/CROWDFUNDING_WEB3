@@ -99,7 +99,7 @@ const Navbar = () => {
         />
         <div
           style={{ background: Colors.trans, backdropFilter: "blur(8px)" }}
-          className={`fixed top-[60px] right-0 left-0 shadow-sm rounded-lg mt-6 bottom-0 py-4 ${
+          className={`fixed top-[60px] right-0 left-0 shadow-sm mt-6 bottom-0 py-4 ${
             toggleDrawer
               ? "translate-y-0 "
               : `translate-y-[110vh] 
