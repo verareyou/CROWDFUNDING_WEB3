@@ -1,5 +1,6 @@
 import React from "react";
-import { Colors } from "../constants";
+import { useStateContext } from "../context";
+
 
 function FormField({
   labelName,
@@ -9,6 +10,7 @@ function FormField({
   value,
   handleChange,
 }) {
+  const { Colors } = useStateContext();
   return (
     <label className="flex flex-col w-full flex-1">
       {labelName && (
