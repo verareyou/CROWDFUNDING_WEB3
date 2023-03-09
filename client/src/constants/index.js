@@ -59,7 +59,7 @@ export const dark = {
 };
 export const light = {
   primary: "#fff",
-  secondary: "#e8e8e8",
+  secondary: "#f2f2f2",
   selected: "#ccc",
   hover: "#F2F2F2",
   white: "#fff",
@@ -72,4 +72,4 @@ export const light = {
   insec: "#d8d8d8",
 };
 
-export const Colors = dark;
+export const Colors = light;
