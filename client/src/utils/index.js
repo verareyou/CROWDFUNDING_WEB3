@@ -5,8 +5,8 @@ export const daysLeft = (deadLine) => {
   return remainingDays.toFixed(0);
 };
 
-export const calculatePercentage = (goal, raisedAmount) => {
-  const percentage = Math.round((raisedAmount * 100) / goat);
+export const calculateBarPercentage = (goal, raisedAmount) => {
+  const percentage = Math.round((raisedAmount * 100) / goal);
 
   return percentage;
 };

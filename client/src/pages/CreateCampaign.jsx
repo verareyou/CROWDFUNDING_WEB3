@@ -4,11 +4,14 @@ import { ethers } from "ethers";
 
 import { money } from "../assets";
 import { CustomBtn, FormField, Loader } from "../components";
-import { Colors } from "../constants";
+// import { Colors } from "../constants";
 import { checkIfImage } from "../utils";
 import { useStateContext } from "../context";
+// const { Colors } = useStateContext();
+
 
 const CreateCampaign = () => {
+  const { Colors } = useStateContext();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { createCampaign } = useStateContext();

@@ -15,7 +15,7 @@ const Home = () => {
     const campaigns = await getCampaigns();
     setCampaigns(campaigns);
     setIsLoading(false);
-    // console.log(campaigns)
+    console.log("hi")
   }
 
   useEffect(() => {

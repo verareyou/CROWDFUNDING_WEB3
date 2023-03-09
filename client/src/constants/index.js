@@ -45,8 +45,8 @@ export const navlinks = [
 
 export const dark = {
   primary: "#101618",
-  secondary: "#181c1f",
-  selected: "#202324",
+  secondary: "#161c1f",
+  selected: "#20282c",
   hover: "#F2F2F2",
   white: "white",
   black: "#000",
@@ -72,4 +72,4 @@ export const light = {
   insec: "#d8d8d8",
 };
 
-export const Colors = light;
+
