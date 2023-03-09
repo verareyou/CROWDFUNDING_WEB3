@@ -2,48 +2,61 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { logo, sun } from "../assets";
-import { Colors, light, navlinks } from "../constants";
+import { navlinks } from "../constants";
+import { useStateContext } from "../context";
+// const { Colors } = useStateContext();
 
-const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
-  <div
-    className={` w-[48px] h-[48px] rounded-full ${
-      isActive && isActive === name && `${Colors.primary === "#fff" ? "bg-[#ccc]" : "bg-[#222]"}`
-    } flex justify-center items-center ${
-      !disabled && " cursor-pointer "
-    } ${styles} `}
-    onClick={handleClick}
-  >
-    {!isActive ? (
-      <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2" />
-    ) : (
-      <img
-        src={imgUrl}
-        alt="fund_logo"
-        className={`w-1/2 h-1/2 ${isActive !== name && "grayscale "} `}
-      />
-    )}
-  </div>
-);
+const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => {
+  const { Colors } = useStateContext();
+  const insec=Colors.insec;
+  return (
+    <div
+      style={{
+        background: isActive && isActive === name && `${Colors.selected}`,
+      }}
+      className={` w-[48px] h-[48px] rounded-full flex justify-center items-center ${
+        !disabled && `${ Colors.text === "#fff" ? "hover:bg-[#20282c]" : "hover:bg-[#ccc]" } cursor-pointer `
+      } ${styles} `}
+      onClick={handleClick}
+    >
+      {!isActive ? (
+        <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2" />
+      ) : (
+        <img
+          src={imgUrl}
+          alt="fund_logo"
+          className={`w-1/2 h-1/2 ${isActive !== name && "grayscale "} `}
+        />
+      )}
+    </div>
+  );
+};
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("dashboard");
+
+  const { changeTheme } = useStateContext();
+  const { Colors } = useStateContext();
 
   React.useEffect(() => {
     const url = window.location.href;
     const urlArr = url.split("/");
     const lastUrl = urlArr[urlArr.length - 1];
     const final = lastUrl === "" ? "dashboard" : lastUrl;
-    // console.log(final);
+    console.log(final);
     setIsActive(final);
-
   }, [window.location.href]);
 
   return (
     <div className="flex flex-col justify-center items-center sticky top-5 h-[93vh] ">
       <Link to="/">
         <Icon
-          styles={` w-[52px] h-[52px] ${Colors.primary === "#fff" ? "bg-[#fff]" : "bg-[#222]"} duration-200 ${Colors.primary === "#fff" ? "hover:bg-[#000]" : "hover:bg-[#fff]"}  `}
+          styles={` w-[52px] h-[52px] ${
+            Colors.text === "#fff" ? "bg-[#20282c]" : "bg-[#f2f2f2]"
+          } duration-200 ${
+            Colors.text === "#000" ? "hover:bg-[#000]" : "hover:bg-[#fff]"
+          }  `}
           imgUrl={logo}
         />
       </Link>
@@ -62,19 +75,24 @@ const Sidebar = () => {
               styles={`${
                 !link.disabled &&
                 isActive !== link.name &&
-                " duration-200 hover:bg-[#222] "
+                " duration-200 "
               }`}
               isActive={isActive}
               handleClick={() => {
                 if (!link.disabled) {
-                  // setIsActive(link.name);
+                  setIsActive(link.name);
                   navigate(link.link);
+                  // console.log(link.link);
                 }
               }}
             />
           ))}
         </div>
-      <Icon imgUrl={sun} styles={`${Colors.primary === "#fff" ? "bg-[#ccc]" : "bg-[#222]"} mt-2 shadow-secondary`} />
+        <Icon
+          imgUrl={sun}
+          handleClick={() => changeTheme()}
+         
+        />
       </div>
     </div>
   );
