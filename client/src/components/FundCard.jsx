@@ -1,6 +1,10 @@
 import React from "react";
-import { tagType, thirdweb } from "../assets";
-import { Colors } from "../constants";
+import { tagType, thirdweb, user } from "../assets";
+// import { Colors } from "../constants";
+
+import { useStateContext } from "../context";
+// const { Colors } = useStateContext();
+
 import { daysLeft } from "../utils";
 
 const FundCard = ({
@@ -14,19 +18,15 @@ const FundCard = ({
   handleClick,
 }) => {
   const remainingDays = daysLeft(deadline);
+    const { Colors } = useStateContext();
   return (
     <div
       style={{ 
         background: Colors.secondary,
     }}
-      className="sm:w-[258px] shadow-sm w-full rounded-[15px] cursor-pointer "
+      className="sm:w-[258px] z-[1] shadow-sm w-full rounded-[15px] cursor-pointer "
       onClick={handleClick}
     >
-        {/* <img
-          src={image}
-          alt="fund"
-          className="sm:w-[258px] absolute h-[158px] z-[1] blur-[20px] object-cover rounded-[15px] "
-        /> */}
       <img
         src={image}
         alt="fund"
@@ -86,11 +86,11 @@ const FundCard = ({
         </div>
 
         <div className=" flex items-center mt-[20px] gap-[12px] ">
-          <div className=" w-[30px] h-[30px] rounded-full flex justify-center items-center bg-[#13131a] ">
-            <img src={thirdweb} alt="" className="w-1/2 h-1/2 object-contain" />
+          <div className=" w-[30px] h-[30px] rounded-full flex justify-center items-center bg-[#ffffff] ">
+            <img src={user} alt="" className=" object-cover " />
           </div>
           <p
-            style={{ color: Colors.lighttext }}
+          style={{ color: Colors.lighttext }}
             className=" flex-1 font-normal text-[12px] truncate "
           >
             <span>{owner}</span>
