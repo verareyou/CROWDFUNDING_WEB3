@@ -1,0 +1,49 @@
+import React from "react";
+import { loader } from "../assets";
+import { useNavigate } from "react-router-dom";
+import FundCard from "./FundCard";
+
+const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
+  // console.log(campaigns)
+  const navigate = useNavigate();
+
+  const handleNavigate = (campaign) => {
+    // navigate(`/campaign`);
+    navigate(`/campaign/${campaign.title}`, { state: campaign });
+  };
+  return (
+    <div>
+      <h1 className="text-[18px] text-left ">
+        {title} ({campaigns.length})
+      </h1>
+      <div className=" flex flex-wrap mt-[20px] gap-[26px] ">
+        {isLoading && (
+          <img
+            src={loader}
+            alt="loader"
+            className=" w-[100px] h-[100px] object-contain "
+          />
+        )}
+
+        {!isLoading && campaigns.length === 0 && (
+          <h1 className="text-[18px] text-left ">No Campaigns</h1>
+        )}
+
+        {!isLoading &&
+          campaigns.length > 0 &&
+          campaigns.map((campaign) => (
+            <FundCard
+              key={campaign.pId}
+              {...campaign}
+              handleClick={() => {
+                handleNavigate(campaign);
+                // console.log(campaign);
+              }}
+            />
+          ))}
+      </div>
+    </div>
+  );
+};
+
+export default DisplayCampaigns;

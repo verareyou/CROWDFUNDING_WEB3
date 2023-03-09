@@ -34,7 +34,7 @@ const Sidebar = () => {
     const urlArr = url.split("/");
     const lastUrl = urlArr[urlArr.length - 1];
     const final = lastUrl === "" ? "dashboard" : lastUrl;
-    console.log(final);
+    // console.log(final);
     setIsActive(final);
 
   }, [window.location.href]);

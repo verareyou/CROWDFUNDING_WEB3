@@ -1,11 +1,12 @@
 import React from 'react'
 
-const CustomBtn = ({title, styles, btnType}) => {
+const CustomBtn = ({title, styles, btnType, handleClick}) => {
   // console.log(btnType)
   return (
     <button
       type={btnType}
-      className={`w-[200px] h-[52px] rounded-[10px] px-4 leading-[26px] font-epilogue font-bold text-[16px] duration-200 text-white ${styles} `}
+      onClick={handleClick}
+      className={`w-[200px] h-[52px] rounded-[10px] px-4 font-epilogue font-bold text-[16px] duration-200 text-white ${styles} `}
     >
       {title}
     </button>

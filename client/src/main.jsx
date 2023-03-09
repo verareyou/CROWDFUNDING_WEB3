@@ -10,10 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <ThirdwebProvider chainId={ChainId.Goerli}>
-    <Router>
       <StateContextProvider>
-      <App />
-      </StateContextProvider>
+    <Router>
+        <App />
     </Router>
+      </StateContextProvider>
   </ThirdwebProvider>
 );

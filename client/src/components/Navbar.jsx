@@ -12,13 +12,13 @@ const Navbar = () => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   // const [address, setAddress] = useState("");
   const { connect, address } = useStateContext();
+  // console.log("address : " + address); 
 
   React.useEffect(() => {
     const url = window.location.href;
     const urlArr = url.split("/");
     const lastUrl = urlArr[urlArr.length - 1];
     const final = lastUrl === "" ? "dashboard" : lastUrl;
-    console.log(final);
     setIsActive(final);
   }, [window.location.href]);
 
@@ -27,8 +27,7 @@ const Navbar = () => {
       className={
         "flex sm:flex-row flex-col-reverse mb-[35px] gap-6 justify-between"
       }
-   >
-    
+    >
       <div
         style={{ background: Colors.secondary }}
         className={` lg:flex-1 flex flex-row max-w-[458px] h-[52px] rounded-[100px] pl-6 pr-3 py-2 `}
@@ -36,7 +35,7 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search for campaigns"
-          className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#575a61] text-white bg-transparent outline-none"
+          className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#575a61] bg-transparent outline-none"
         />
         <div className="h-full px-2.5 bg-[#4acd78] flex justify-center items-center rounded-full cursor-pointer duration-200 ease-in-out hover:bg-[#2ce16b] ">
           <img src={search} alt="search" className="w-[18px] h-[18px] " />
@@ -46,15 +45,16 @@ const Navbar = () => {
         <CustomBtn
           btnType="button"
           title={address ? "Create a campaign" : "Connect Wallet"}
-          styles={
-            address
+          styles={`
+            ${address
               ? "bg-[#4acd78] hover:bg-[#2ce16b] "
-              : "bg-[#4acd78] hover:bg-[#2ce16b] "
-          }
+              : "bg-[#4acd78] hover:bg-[#2ce16b] "}
+          `}
           handleClick={() => {
             if (address) {
-              navigate("create-campaign");
+              navigate("campaign");
             } else {
+              // console.log("hello")
               connect();
             }
           }}
@@ -82,7 +82,7 @@ const Navbar = () => {
           <img
             src={thirdweb}
             onClick={() => {
-              // navigate("Profile");
+              navigate("Profile");
               setIsActive("profile");
             }}
             alt="user"
@@ -102,9 +102,9 @@ const Navbar = () => {
           className={`fixed top-[60px] right-0 left-0 shadow-sm rounded-lg mt-6 bottom-0 py-4 ${
             toggleDrawer
               ? "translate-y-0 "
-              : `translate-y-[110vh] blur-lg 
+              : `translate-y-[110vh] 
              `
-          } duration-200 `}
+          } duration-300 ease-in-out z-10 `}
         >
           <ul className="mb-4">
             {navlinks.map((link) => (
@@ -146,9 +146,9 @@ const Navbar = () => {
           `}
             handleClick={() => {
               if (address) {
-                navigate("create-campaign");
+                navigate("campaign");
               } else {
-                ("connectWallet()");
+                connect();
               }
             }}
           />

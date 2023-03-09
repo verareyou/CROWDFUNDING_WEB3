@@ -44,17 +44,17 @@ export const navlinks = [
 ];
 
 export const dark = {
-  primary: "#090909",
-  secondary: "#0f0f0f",
-  selected: "#222",
+  primary: "#101618",
+  secondary: "#181c1f",
+  selected: "#202324",
   hover: "#F2F2F2",
   white: "white",
   black: "#000",
   gray: "#333",
   lightGray: "#666",
   text: "#fff",
-  lighttext: "#ccc",
-  trans: "rgba(255,255,255,0.02)",
+  lighttext: "#777",
+  trans: "rgba(0,30,50,0.1)",
   insec: "#ffffff09",
 };
 export const light = {
@@ -67,8 +67,8 @@ export const light = {
   gray: "#a5a5a5",
   lightGray: "#373737",
   text: "#000",
-  lighttext: "#222",
-  trans: "rgba(0,0,0,0.08)",
+  lighttext: "#666",
+  trans: "rgba(0,60,80,0.1)",
   insec: "#d8d8d8",
 };
 
