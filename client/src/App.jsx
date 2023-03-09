@@ -2,13 +2,19 @@ import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import { Navbar, Sidebar } from "./components";
 import { CampaignDetails, CreateCampaign, Home, Profile } from "./pages";
-import { Colors } from "./constants";
+// import { Colors } from "./constants";
+import { useStateContext } from "./context";
+
+
 
 const App = () => {
+  const { Colors } = useStateContext();
+  // console.log(Colors);
+  
   return (
     <div
       style={{ background: Colors.primary, color: Colors.text }}
-      className="relative text-white sm:-8 duration-200 p-4 min-h-screen flex flex-row "
+      className="relative text-white sm:-8 duration-500 p-4 min-h-screen flex flex-row "
     >
       <div className="sidebar sm:flex hidden relative mr-10 ">
         <Sidebar />
