@@ -16,14 +16,21 @@ const FundCard = ({
   const remainingDays = daysLeft(deadline);
   return (
     <div
-      style={{ background: Colors.secondary }}
-      className="sm:w-[258px] w-full rounded-[15px] cursor-pointer "
+      style={{ 
+        background: Colors.secondary,
+    }}
+      className="sm:w-[258px] shadow-sm w-full rounded-[15px] cursor-pointer "
       onClick={handleClick}
     >
+        {/* <img
+          src={image}
+          alt="fund"
+          className="sm:w-[258px] absolute h-[158px] z-[1] blur-[20px] object-cover rounded-[15px] "
+        /> */}
       <img
         src={image}
         alt="fund"
-        className=" w-full h-[158px] object-cover rounded-[15px] "
+        className=" w-full h-[158px] object-cover z-[20] rounded-[15px] "
       />
 
       <div className="flex flex-col p-4 ">
