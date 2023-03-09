@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { CustomBtn } from "./";
 import { logo, menu, search, thirdweb } from "../assets";
-import { Colors, navlinks } from "../constants";
+import { navlinks } from "../constants";
 import { useStateContext } from "../context";
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   // const [address, setAddress] = useState("");
-  const { connect, address } = useStateContext();
+  const { connect, address, Colors } = useStateContext();
   // console.log("address : " + address); 
 
   React.useEffect(() => {
@@ -41,7 +41,7 @@ const Navbar = () => {
           <img src={search} alt="search" className="w-[18px] h-[18px] " />
         </div>
       </div>
-      <div className="sm:flex hidden flex-row justify-end gap-4 ">
+      <div className="sm:flex hidden flex-row justify-end items-center gap-4 ">
         <CustomBtn
           btnType="button"
           title={address ? "Create a campaign" : "Connect Wallet"}
@@ -59,18 +59,22 @@ const Navbar = () => {
             }
           }}
         />
-        <Link>
+
           <div
-            style={{ background: Colors.secondary }}
-            className=" h-[40px] w-[40px] rounded-full flex justify-center items-center cursor-pointer "
-          >
-            <img
-              src={logo}
-              alt="user"
-              className=" w-[60%] h-[60%] object-contain "
-            />
-          </div>
-        </Link>
+          style={{ background: Colors.secondary }}
+          className=" h-[52px] w-[52px] rounded-full flex justify-center items-center cursor-pointer "
+        >
+          <img
+            src={thirdweb}
+            onClick={() => {
+              navigate("profile");
+              setIsActive("profile");
+            }}
+            alt="user"
+            className=" w-[60%] h-[60%] object-contain "
+          />
+        </div>
+        
       </div>
       {/* small screen navigation */}
 
@@ -83,7 +87,7 @@ const Navbar = () => {
             src={thirdweb}
             onClick={() => {
               navigate("Profile");
-              setIsActive("profile");
+              setIsActive("Profile");
             }}
             alt="user"
             className=" w-[60%] h-[60%] object-contain "
