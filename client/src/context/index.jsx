@@ -10,6 +10,21 @@ import { light, dark } from "../constants";
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
+
+  // search state
+
+  let [search, setSearch] = React.useState("");
+
+  let [searchResults, setSearchResults] = React.useState([]);
+
+  let searchTerm;
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    searchTerm = search;
+  };
+
+
+
   
   // theme state
   let [theme, setTheme] = React.useState(dark);
@@ -64,11 +79,8 @@ export const StateContextProvider = ({ children }) => {
 
   const getCampaigns = async () => {
     try {
-      console.log( "getting campaigns")
       const campaigns = await contract.call("getCampaigns")
-  
-      // console.log("cam"+campaigns)
-      
+        
       const parsedCampaigns = campaigns.map((campaign, i) =>({
         owner: campaign.owner,
         title: campaign.title,
@@ -92,6 +104,30 @@ export const StateContextProvider = ({ children }) => {
     return userCampaigns;
   }
 
+  const donate = async (pId, amount) => {
+    const data = await contract.call("donateToCampaign", pId, {
+      value: ethers.utils.parseEther(amount)
+    })
+
+    return data;
+  }
+
+  const getDonations = async (pId) => {
+    const donations = await contract.call("getDonators", pId);
+    const numOfDonations = donations[0].length;
+    
+    const parsedDonations = [];
+
+    for (let i = 0; i < numOfDonations; i++) {
+      parsedDonations.push({
+        donator: donations[0][i],
+        donation: ethers.utils.formatEther(donations[1][i].toString()),
+      })
+    }
+
+    return parsedDonations;
+  }
+
   return (
     <StateContext.Provider
       value={{
@@ -99,6 +135,14 @@ export const StateContextProvider = ({ children }) => {
         changeTheme,
         address,
         contract,
+        search,
+        handleSearch,
+        searchResults,
+        setSearch,
+        setSearchResults,
+        searchTerm,
+        donate,
+        getDonations,
         connect,
         getCampaigns,
         getUserCampaigns,

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { CustomBtn } from "./";
-import { logo, menu, search, thirdweb } from "../assets";
+import { logo, menu, 
+  search,
+   thirdweb } from "../assets";
 import { navlinks } from "../constants";
 import { useStateContext } from "../context";
 
@@ -11,8 +13,10 @@ const Navbar = () => {
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   // const [address, setAddress] = useState("");
-  const { connect, address, Colors } = useStateContext();
-  // console.log("address : " + address); 
+  const { connect, address, Colors,
+     setSearch
+  } = useStateContext();
+  // console.log("address : " + search); 
 
   React.useEffect(() => {
     const url = window.location.href;
@@ -34,6 +38,7 @@ const Navbar = () => {
       >
         <input
           type="text"
+          onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#575a61] bg-transparent outline-none"
         />

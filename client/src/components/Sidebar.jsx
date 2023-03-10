@@ -15,7 +15,7 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => {
         background: isActive && isActive === name && `${Colors.selected}`,
       }}
       className={` w-[48px] h-[48px] rounded-full flex justify-center items-center ${
-        !disabled && `${ Colors.text === "#fff" ? "hover:bg-[#20282c]" : "hover:bg-[#ccc]" } cursor-pointer `
+        !disabled && `${ Colors.text === "#fff" ? "hover:bg-[#20282c]" : "hover:bg-[#ccc]" } cursor-pointer duration-150 `
       } ${styles} `}
       onClick={handleClick}
     >
@@ -73,9 +73,9 @@ const Sidebar = () => {
               key={link.name}
               {...link}
               styles={`${
-                !link.disabled &&
-                isActive !== link.name &&
-                " duration-200 "
+                link.disabled &&
+                
+                "hidden"
               }`}
               isActive={isActive}
               handleClick={() => {
