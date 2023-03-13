@@ -89,6 +89,9 @@ const CampaignDetails = () => {
 
   return (
     <div>
+      <head>
+        <title>{state.title}</title>
+      </head>
       <div
         onClick={scrollToTop}
         className={

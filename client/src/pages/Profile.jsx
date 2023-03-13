@@ -26,11 +26,16 @@ const Profile = () => {
   // console.log(campaigns)
 
   return (
+    <>
+    <head>
+        <title>Your Campaigns</title>
+      </head>
     <DisplayCampaigns
-      title={'All Campaigns'}
+      title={'Your Campaigns'}
       campaigns={campaigns}
       isLoading={isLoading}
     />
+    </>
   )
 }
 

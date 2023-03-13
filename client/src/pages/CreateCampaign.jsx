@@ -52,6 +52,9 @@ const CreateCampaign = () => {
       style={{ background: Colors.secondary }}
       className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 "
     >
+      <head>
+        <title>New Campaign</title>
+      </head>
       {isLoading && <Loader />}
       <div
         style={{ background: Colors.insec }}
