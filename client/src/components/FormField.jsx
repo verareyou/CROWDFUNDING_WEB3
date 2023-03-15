@@ -25,7 +25,8 @@ function FormField({
           onChange={handleChange}
           rows="10"
           placeholder={placeholder}
-          className=" py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#4d4d4d] bg-transparent rounded-[10px] text-[14px] sm:min-w-[300px] placeholder:text-[#929292]  "
+          style={{ border: `1px solid  ${Colors.lightBorder}` }}
+          className=" py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] bg-transparent rounded-[10px] text-[14px] sm:min-w-[300px] placeholder:text-[#929292]  "
         />
       ) : (
         <input
@@ -34,6 +35,7 @@ function FormField({
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
+          style={{ border: `1px solid  ${Colors.lightBorder}` }}
           className=" py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#4d4d4d] bg-transparent rounded-[10px] text-[14px] sm:min-w-[300px] placeholder:text-[#929292] "
         />
       )}

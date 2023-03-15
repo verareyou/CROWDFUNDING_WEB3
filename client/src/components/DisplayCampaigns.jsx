@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import FundCard from "./FundCard";
 
 const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
-  // console.log(campaigns)
   const navigate = useNavigate();
 
   const handleNavigate = (campaign) => {
@@ -42,7 +41,6 @@ const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
               {...campaign}
               handleClick={() => {
                 handleNavigate(campaign);
-                // console.log(campaign);
               }}
             />
           ))}
