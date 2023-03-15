@@ -7,6 +7,7 @@ import { CustomBtn, FormField, Loader } from "../components";
 // import { Colors } from "../constants";
 import { checkIfImage } from "../utils";
 import { useStateContext } from "../context";
+import Axios from "axios";
 // const { Colors } = useStateContext();
 
 const CreateCampaign = () => {
@@ -14,6 +15,7 @@ const CreateCampaign = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { createCampaign } = useStateContext();
+  const [imageFile, setImageFile] = useState(null);
   const [form, setForm] = useState({
     name: "",
     title: "",
@@ -27,8 +29,28 @@ const CreateCampaign = () => {
     setForm({ ...form, [fieldname]: e.target.value });
   };
 
+  // upload image to cloudinary
+
+  const handleImageChange = async (e) => {
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    formData.append("upload_preset", "opjba4um");
+
+    await Axios.post(
+      "https://api.cloudinary.com/v1_1/dx3nmpipx/image/upload",
+      formData
+    ).then((res) => {
+      setForm({ ...form, image: res.data.secure_url });
+      console.log(res.data.secure_url)
+    });
+    setIsLoading(false);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // await handleImageChange(imageFile);
 
     checkIfImage(form.image, async (exists) => {
       if (exists) {
@@ -45,7 +67,9 @@ const CreateCampaign = () => {
       }
     });
   };
-  const bordercolor = Colors.text === "#fff" ? "#353535" : "#ccc";
+
+  
+
   return (
     <div
       style={{
@@ -54,6 +78,65 @@ const CreateCampaign = () => {
       }}
       className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 "
     >
+      <style>
+        {`
+         .fileInput {
+          border: 1px solid ${Colors.lightBorder};
+          border-radius: 5px;
+          padding: 10px;
+          color: ${Colors.text};
+          background: ${Colors.secondary};
+          width: 100%;
+          outline: none;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .fileInput:hover {
+          background: ${Colors.primary};
+          color: ${Colors.text};
+        }
+        .fileInput:focus {
+          background: ${Colors.primary};
+          color: ${Colors.text};
+        }
+        .fileInput:active {
+          background: ${Colors.primary};
+          color: ${Colors.text};
+        }
+        .fileInput::-webkit-file-upload-button {
+          display: none;
+        }
+        .fileInput::before {
+          content: "Upload Image";
+          display: inline-block;
+          background: ${Colors.insec};
+          color: ${Colors.text};
+          border-radius: 5px;
+          padding: 10px 20px;
+          margin-right: 20px;
+          outline: none;
+          white-space: nowrap;
+          -webkit-user-select: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        // .fileInput::after {
+        //   content: "";
+        //   display: inline-block;
+        //   width: 0;
+        //   height: 0;
+        //   margin-left: 10px;
+        //   vertical-align: middle;
+        //   content: "";
+        //   border-top: 5px solid transparent;
+        //   border-bottom: 5px solid transparent;
+        //   border-left: 5px solid ${Colors.text};
+        //   border-right: 5px solid transparent;
+        // }
+        `}
+      </style>
       <head>
         <title>New Campaign</title>
       </head>
@@ -129,12 +212,20 @@ const CreateCampaign = () => {
             handleChange={(e) => handleFormChange("deadline", e)}
           />
         </div>
-        <FormField
+        {/* <FormField
           labelName="Campaign image *"
           placeholder="Place image URL of your campaign"
           inputType="url"
           value={form.image}
           handleChange={(e) => handleFormChange("image", e)}
+        /> */}
+         <input
+          required
+          type='file'
+          onChange={(e) => handleImageChange(e)}
+          // value={form.image}
+          style={{ border: `1px solid  ${Colors.lightBorder}`, }}
+          className=" fileInput py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#4d4d4d] bg-transparent rounded-[10px] text-[14px] sm:min-w-[300px] placeholder:text-[#929292] "
         />
         <div className="flex justify-center items-center mt-[40px]">
           <CustomBtn
