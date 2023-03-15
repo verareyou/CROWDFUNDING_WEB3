@@ -1,5 +1,5 @@
 import React, { useContext, createContext } from "react";
-import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
+import { useAddress, useContract, useMetamask, useContractWrite, useContractRead } from '@thirdweb-dev/react';
 import { ethers } from "ethers";
 import { EditionMetadataWithOwnerOutputSchema } from "@thirdweb-dev/sdk";
 
@@ -23,9 +23,6 @@ export const StateContextProvider = ({ children }) => {
     searchTerm = search;
   };
 
-
-
-  
   // theme state
   let [theme, setTheme] = React.useState(dark);
 
@@ -45,21 +42,20 @@ export const StateContextProvider = ({ children }) => {
     text: theme.text,
     lighttext: theme.lighttext,
     insec: theme.insec,
+    mode: theme.mode,
+    border: theme.border,
+    lightBorder: theme.lightBorder,
   };
 
-  const { contract } = useContract('0x6239A53Ba290D948CC0d874211F98258504C8c04');
-
-  if (!contract) {
-    console.log("no contract")
-  }
-
+  const { contract } = useContract("0x6239A53Ba290D948CC0d874211F98258504C8c04");
+  
   const { mutateAsync: createCampaign } = useContractWrite(
     contract,
     "createCampaign"
   );
 
-  const connect =  useMetamask();
   const address = useAddress();
+  const connect =  useMetamask();
 
   const publishCampaign = async (form) => {
     try {
@@ -78,7 +74,7 @@ export const StateContextProvider = ({ children }) => {
   };
 
   const getCampaigns = async () => {
-    try {
+    // try {
       const campaigns = await contract.call("getCampaigns")
         
       const parsedCampaigns = campaigns.map((campaign, i) =>({
@@ -93,9 +89,9 @@ export const StateContextProvider = ({ children }) => {
       }))
       return parsedCampaigns;
       
-    } catch (error) {
-      console.log("failed to call contract here" + error);
-    }
+    // } catch (error) {
+    //   console.log("failed to call contract here" + error);
+    // }
   }
 
   const getUserCampaigns = async () => {

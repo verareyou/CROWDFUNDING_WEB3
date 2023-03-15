@@ -56,11 +56,14 @@ export const dark = {
   lighttext: "#777",
   trans: "rgba(0,30,50,0.1)",
   insec: "#ffffff09",
+  border: "#333",
+  lightBorder: "#444",
+  mode: false,
 };
 export const light = {
   primary: "#fff",
   secondary: "#f2f2f2",
-  selected: "#ccc",
+  selected: "#dfdfdf",
   hover: "#F2F2F2",
   white: "#fff",
   black: "#000",
@@ -70,6 +73,9 @@ export const light = {
   lighttext: "#666",
   trans: "rgba(0,60,80,0.1)",
   insec: "#d8d8d8",
+  border: "#ddd",
+  lightBorder: "#ccc",
+  mode: true,
 };
 
 
