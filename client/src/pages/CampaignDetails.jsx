@@ -122,7 +122,7 @@ const CampaignDetails = () => {
             className=" w-full rounded-b-full relative translate-y-[-30%] "
           >
             <div
-              className="h-1 p-1.5 rounded-b-full px-3 bg-[#57ff73] rounded-sm"
+              className="h-1 p-1.5 rounded-b-full rounded-r-full px-3 bg-[#57ff73] "
               style={{
                 width: `${calculateBarPercentage(
                   state.target,
@@ -145,6 +145,8 @@ const CampaignDetails = () => {
       <div className=" mt-[60px] flex lg:flex-row flex-col gap-5 ">
         <div className=" flex-[2] flex flex-col gap-[40px]  ">
           <div>
+
+            <h4 style={{color: Colors.lighttext}} className=" font-semibold text-[22px] mb-[20px] uppercase ">{state.title}</h4>
             <h4 className=" font-semibold text-[18px] uppercase ">Creator</h4>
 
             <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px] ">
