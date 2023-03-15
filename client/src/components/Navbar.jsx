@@ -57,7 +57,7 @@ const Navbar = () => {
             ${address
               ? `bg-[#4acd7800] hover:bg-[#2ce16b] `
               : `bg-[#4acd7800] hover:bg-[#2ce16b] `}
-          `}
+          ` + 'rounded-full'}
           handleClick={() => {
             if (address) {
               navigate("campaign");
