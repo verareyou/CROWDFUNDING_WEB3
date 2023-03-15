@@ -12,10 +12,10 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => {
   return (
     <div
       style={{
-        border: isActive && isActive === name && `1px solid ${Colors.lightBorder}`,
+        background: isActive && isActive === name && `${Colors.selected}`,
       }}
       className={` w-[48px] h-[48px] rounded-full flex justify-center items-center ${
-        !disabled && `${ Colors.text === "#fff" ? "hover:bg-[#20282c]" : "hover:bg-[#eee]" } cursor-pointer duration-150 `
+        !disabled && `${ Colors.text === "#fff" ? "hover:bg-[#20282c]" : "hover:bg-[#ccc]" } cursor-pointer duration-150 `
       } ${styles} `}
       onClick={handleClick}
     >
@@ -61,8 +61,10 @@ const Sidebar = () => {
       </Link>
 
       <div
-          style={{ border: `1px solid  ${Colors.lightBorder}` }}
-        className=" flex-1 relative mt-[30px] flex flex-col justify-between items-center rounded-[10px] p-3 "
+        style={{
+          background: Colors.secondary,
+        }}
+        className=" flex-1 relative mt-5 flex flex-col justify-between items-center rounded-[40px] p-3 "
       >
         <div className="flex flex-col justify-center items-center gap-3">
           {navlinks.map((link) => (
