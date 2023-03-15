@@ -25,6 +25,7 @@ const Navbar = () => {
     const final = lastUrl === "" ? "dashboard" : lastUrl;
     setIsActive(final);
   }, [window.location.href]);
+  const bc = Colors.text === "#fff" ? "#353535" : "#ddd";
 
   return (
     <div
@@ -42,18 +43,20 @@ const Navbar = () => {
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#575a61] bg-transparent outline-none"
         />
-        <div className="h-full px-2.5 bg-[#4acd78] flex justify-center items-center rounded-full cursor-pointer duration-200 ease-in-out hover:bg-[#2ce16b] ">
+        <div className="h-full px-2.5 bg-[#78fda7] flex justify-center items-center rounded-full cursor-pointer duration-200 ease-in-out hover:bg-[#69df92] ">
           <img src={search} alt="search" className="w-[18px] h-[18px] " />
         </div>
       </div>
       <div className="sm:flex hidden flex-row justify-end items-center gap-4 ">
         <CustomBtn
           btnType="button"
+          textColor={Colors.text=== "#fff" ? "#fff" : "#555"}
           title={address ? "Create a campaign" : "Connect Wallet"}
+          css={` border: '1px solid  ${Colors.lightBorder}' `}
           styles={`
             ${address
-              ? "bg-[#4acd78] hover:bg-[#2ce16b] "
-              : "bg-[#4acd78] hover:bg-[#2ce16b] "}
+              ? `bg-[#4acd7800] hover:bg-[#2ce16b] `
+              : `bg-[#4acd7800] hover:bg-[#2ce16b] `}
           `}
           handleClick={() => {
             if (address) {
