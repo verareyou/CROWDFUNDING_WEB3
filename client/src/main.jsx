@@ -7,13 +7,12 @@ import "./index.css";
 import { StateContextProvider } from "./context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// console.log("");
 root.render(
   <ThirdwebProvider chainId={ChainId.Goerli}>
-      <StateContextProvider>
-    <Router>
+    <StateContextProvider>
+      <Router>
         <App />
-    </Router>
-      </StateContextProvider>
+      </Router>
+    </StateContextProvider>
   </ThirdwebProvider>
 );
