@@ -10,7 +10,6 @@ const CampaignDetails = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { address, contract, getDonations, donate, Colors } = useStateContext();
-  // console.log(state)
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(true);
 
@@ -59,7 +58,6 @@ const CampaignDetails = () => {
   });
 
   useEffect(() => {
-    console.log("window.innerWidth", window.innerWidth);
     if (window.innerWidth < 768) {
       setIsMobile({ tap: 900, scroll: 800 });
     } else {
@@ -77,7 +75,6 @@ const CampaignDetails = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", checkScrollTop);
-    console.log("scrolling");
   }, [window.pageYOffset]);
 
   const scrollToTop = () => {
@@ -122,16 +119,15 @@ const CampaignDetails = () => {
               // backgroundColor: `#222`,
               backgroundColor: Colors.text === "#fff" ? "#22282a" : "#eef2f5",
             }}
-            className=" w-full p-1 rounded-full relative translate-y-[-49%] "
+            className=" w-full rounded-b-full relative translate-y-[-30%] "
           >
             <div
-              className="h-1 p-2 px-3  rounded-full"
+              className="h-1 p-1.5 rounded-b-full px-3 bg-[#57ff73] rounded-sm"
               style={{
                 width: `${calculateBarPercentage(
                   state.target,
                   state.amountcollected
                 )}%`,
-                backgroundColor: Colors.text === "#fff" ? "#fff" : "#333",
               }}
             ></div>
           </div>

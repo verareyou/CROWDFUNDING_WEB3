@@ -26,15 +26,12 @@ const Home = () => {
     const campaigns = await getCampaigns();
     setCampaigns(campaigns);
     setIsLoading(false);
-    console.log("hi");
   };
 
   useEffect(() => {
-    if (!contract) return;
-    fetchCampaigns();
+    if (contract) fetchCampaigns();
   }, [contract, address]);
 
-  // console.log(campaigns)
 
   return (
     <>
