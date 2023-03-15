@@ -9,7 +9,6 @@ import { checkIfImage } from "../utils";
 import { useStateContext } from "../context";
 // const { Colors } = useStateContext();
 
-
 const CreateCampaign = () => {
   const { Colors } = useStateContext();
   const navigate = useNavigate();
@@ -46,10 +45,13 @@ const CreateCampaign = () => {
       }
     });
   };
-
+  const bordercolor = Colors.text === "#fff" ? "#353535" : "#ccc";
   return (
     <div
-      style={{ background: Colors.secondary }}
+      style={{
+        background: "transparent",
+        border: `1px solid ${Colors.lightBorder} `,
+      }}
       className=" flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 "
     >
       <head>
@@ -57,7 +59,7 @@ const CreateCampaign = () => {
       </head>
       {isLoading && <Loader />}
       <div
-        style={{ background: Colors.insec }}
+        style={{ background: Colors.secondary }}
         className="flex flex-col justify-center items-center p-[16px] sm:min-w-[380px] w-[100%] lg:w-[80%] rounded-[10px] "
       >
         <h1
