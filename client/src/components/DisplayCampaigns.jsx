@@ -2,6 +2,7 @@ import React from "react";
 import { loader } from "../assets";
 import { useNavigate } from "react-router-dom";
 import FundCard from "./FundCard";
+import { daysLeft } from "../utils";
 
 const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
         {!isLoading &&
           campaigns.length > 0 &&
           campaigns.map((campaign) => (
+            daysLeft(campaign.deadline) > 0 && (
             <FundCard
               key={campaign.pId}
               {...campaign}
@@ -43,6 +45,7 @@ const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
                 handleNavigate(campaign);
               }}
             />
+            )
           ))}
       </div>
     </div>
