@@ -15,7 +15,6 @@ const Profile = () => {
     const campaigns = await getUserCampaigns();
     setCampaigns(campaigns);
     setIsLoading(false);
-    // console.log(campaigns)
   }
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const Profile = () => {
     fetchCampaigns();
   }, [contract, address])
 
-  // console.log(campaigns)
 
   return (
     <>
