@@ -43,7 +43,7 @@ const Navbar = () => {
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#575a61] bg-transparent outline-none"
         />
-        <div className="h-full px-2.5 bg-[#78fda7] flex justify-center items-center rounded-full cursor-pointer duration-200 ease-in-out hover:bg-[#69df92] ">
+        <div className="h-full px-2.5 bg-[#42e57b] flex justify-center items-center rounded-full cursor-pointer duration-200 ease-in-out hover:bg-[#32d36a] ">
           <img src={search} alt="search" className="w-[18px] h-[18px] " />
         </div>
       </div>
