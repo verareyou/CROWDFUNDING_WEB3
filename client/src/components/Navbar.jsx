@@ -34,7 +34,10 @@ const Navbar = () => {
       }
     >
       <div
-        style={{ background: Colors.secondary }}
+        style={{ 
+          // background: Colors.secondary,
+          border: `1px solid ${Colors.lightBorder}`
+        }}
         className={` lg:flex-1 flex flex-row max-w-[458px] h-[52px] rounded-[100px] pl-6 pr-3 py-2 `}
       >
         <input

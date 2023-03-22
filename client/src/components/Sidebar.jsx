@@ -8,15 +8,21 @@ import { useStateContext } from "../context";
 
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => {
   const { Colors } = useStateContext();
-  const insec=Colors.insec;
+  const insec = Colors.insec;
   return (
     <div
       style={{
         background: isActive && isActive === name && `${Colors.selected}`,
+        // border:
+        //   isActive && isActive === name
+        //     ? `1px solid ${Colors.border}`
+        //     : `1px solid ${Colors.lightBorder}`,
       }}
-      className={` w-[48px] h-[48px] rounded-full flex justify-center items-center ${
-        !disabled && `${ Colors.text === "#fff" ? "hover:bg-[#20282c]" : "hover:bg-[#ccc]" } cursor-pointer duration-150 `
-      } ${styles} `}
+      className={` w-[48px] h-[48px] rounded-full flex justify-center items-center 
+      ${!disabled &&
+        `${Colors.text === "#fff" ? "hover:bg-[#282828]" : "hover:bg-[#ccc]"}
+         cursor-pointer duration-150 `}
+       ${styles} bg-[#ffffff00]  `}
       onClick={handleClick}
     >
       {!isActive ? (
@@ -52,7 +58,7 @@ const Sidebar = () => {
       <Link to="/">
         <Icon
           styles={` w-[52px] h-[52px] ${
-            Colors.text === "#fff" ? "bg-[#20282c]" : "bg-[#f2f2f2]"
+            Colors.text === "#fff" ? "bg-[#222]" : "bg-[#f2f2f2]"
           } duration-200 ${
             Colors.text === "#000" ? "hover:bg-[#000]" : "hover:bg-[#fff]"
           }  `}
@@ -62,7 +68,8 @@ const Sidebar = () => {
 
       <div
         style={{
-          background: Colors.secondary,
+          // background: Colors.secondary,
+          border: `1px solid ${Colors.lightBorder}`,
         }}
         className=" flex-1 relative mt-5 flex flex-col justify-between items-center rounded-[40px] p-3 "
       >
@@ -71,11 +78,7 @@ const Sidebar = () => {
             <Icon
               key={link.name}
               {...link}
-              styles={`${
-                link.disabled &&
-                
-                "hidden"
-              }`}
+              styles={`${link.disabled && "hidden"}`}
               isActive={isActive}
               handleClick={() => {
                 if (!link.disabled) {
@@ -87,11 +90,7 @@ const Sidebar = () => {
             />
           ))}
         </div>
-        <Icon
-          imgUrl={sun}
-          handleClick={() => changeTheme()}
-         
-        />
+        <Icon imgUrl={sun} handleClick={() => changeTheme()} />
       </div>
     </div>
   );
