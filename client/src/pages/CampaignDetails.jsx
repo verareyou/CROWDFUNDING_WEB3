@@ -47,7 +47,7 @@ const CampaignDetails = () => {
     }
   };
 
-  const remainingDays = daysLeft(state.deadline);
+  const remainingDays = daysLeft(state.deadline) > 0 ? daysLeft(state.deadline) : 'Funded';
 
   // smooth scroll button to top
 

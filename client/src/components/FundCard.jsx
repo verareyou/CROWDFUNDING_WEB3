@@ -17,7 +17,7 @@ const FundCard = ({
   image,
   handleClick,
 }) => {
-  const remainingDays = daysLeft(deadline);
+  const remainingDays = daysLeft(deadline) < 0 ? 'Funded' : daysLeft(deadline);
     const { Colors } = useStateContext();
   return (
     <div
