@@ -8,7 +8,7 @@ import { StateContextProvider } from "./context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThirdwebProvider chainId={ChainId.Localhost}>
+  <ThirdwebProvider chainId={ChainId.Goerli}>
     <StateContextProvider>
       <Router>
         <App />
