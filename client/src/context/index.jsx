@@ -24,7 +24,9 @@ export const StateContextProvider = ({ children }) => {
   };
 
   // theme state
-  let [theme, setTheme] = React.useState(dark);
+  let [theme, setTheme] = React.useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches ? dark : light
+  );
 
   let changeTheme = () => {
     theme === dark ? setTheme(light) : setTheme(dark);

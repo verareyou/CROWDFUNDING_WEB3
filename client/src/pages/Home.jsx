@@ -35,9 +35,7 @@ const Home = () => {
 
   return (
     <>
-      <head>
         <title>CrowdFunding-web3</title>
-      </head>
       <DisplayCampaigns
         title={"All Campaigns"}
         campaigns={FilterCampaigns()}
