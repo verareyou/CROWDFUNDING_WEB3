@@ -22,7 +22,8 @@ const FundCard = ({
   return (
     <div
       style={{ 
-        background: Colors.secondary,
+        // background: Colors.secondary,
+        border: `1px solid ${Colors.lightBorder}`,
     }}
       className="sm:w-[258px] z-[1] shadow-sm w-full rounded-[15px] cursor-pointer "
       onClick={handleClick}
@@ -30,7 +31,7 @@ const FundCard = ({
       <img
         src={image}
         alt="fund"
-        className=" w-full h-[158px] object-cover z-[20] rounded-[15px] "
+        className=" w-full h-[158px] object-cover z-[20] scale-90 mt-1 rounded-[15px] "
       />
 
       <div className="flex flex-col p-4 ">
