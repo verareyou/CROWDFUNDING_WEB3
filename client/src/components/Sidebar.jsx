@@ -43,7 +43,7 @@ const Sidebar = () => {
   const [isActive, setIsActive] = useState("dashboard");
 
   const { changeTheme } = useStateContext();
-  const { Colors } = useStateContext();
+  const { Colors,disconnect } = useStateContext();
 
   React.useEffect(() => {
     const url = window.location.href;
@@ -85,6 +85,9 @@ const Sidebar = () => {
                   setIsActive(link.name);
                   navigate(link.link);
                   // console.log(link.link);
+                  if (link.onClick === true) {
+                    disconnect();
+                  }
                 }
               }}
             />

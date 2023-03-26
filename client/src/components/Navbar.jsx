@@ -14,7 +14,7 @@ const Navbar = () => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   // const [address, setAddress] = useState("");
   const { connect, address, Colors,
-     setSearch
+     setSearch, disconnect
   } = useStateContext();
   // console.log("address : " + search); 
 
@@ -133,6 +133,9 @@ const Navbar = () => {
                   setIsActive(link.name);
                   setToggleDrawer(false);
                   navigate(link.link);
+                  if (link.onClick === true) {
+                    console.log("hello");
+                  }
                 }}
               >
                 <img

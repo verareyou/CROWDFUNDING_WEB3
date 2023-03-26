@@ -1,5 +1,8 @@
 import React, { useContext, createContext } from "react";
-import { useAddress, useContract, useMetamask, useContractWrite, useContractRead } from '@thirdweb-dev/react';
+import { useAddress, useContract, useMetamask, useContractWrite, useContractRead,
+ } from '@thirdweb-dev/react';
+
+//  import { useMetamaskDisconnect } from "dapp-wallets";
 import { ethers } from "ethers";
 import { EditionMetadataWithOwnerOutputSchema } from "@thirdweb-dev/sdk";
 
@@ -56,7 +59,16 @@ export const StateContextProvider = ({ children }) => {
     "createCampaign"
   );
 
-  const address = useAddress();
+  let address = useAddress();
+
+  // disconnect metamask
+  const disconnect = () => {
+    // window.localStorage.removeItem("address");
+    // window.localStorage.removeItem("wallet");
+    // window.location.reload();
+    console.log("hello");
+  };
+
   const connect =  useMetamask();
 
   const publishCampaign = async (form) => {
@@ -131,6 +143,7 @@ export const StateContextProvider = ({ children }) => {
       value={{
         Colors,
         changeTheme,
+        disconnect,
         address,
         contract,
         search,

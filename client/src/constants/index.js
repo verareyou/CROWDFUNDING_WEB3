@@ -12,34 +12,45 @@ export const navlinks = [
     name: "dashboard",
     imgUrl: dashboard,
     link: "/",
+    onClick: false,
+
   },
   {
     name: "campaign",
     imgUrl: createCampaign,
     link: "/campaign",
+    onClick: false,
+
   },
   {
     name: "payment",
     imgUrl: payment,
     link: "/",
     disabled: true,
+    onClick: false,
+
   },
   {
     name: "withdraw",
     imgUrl: withdraw,
     link: "/",
     disabled: true,
+    onClick: false,
+
   },
   {
     name: "profile",
     imgUrl: profile,
     link: "/profile",
+    onClick: false,
+
   },
   {
     name: "logout",
     imgUrl: logout,
     link: "/",
-    disabled: true,
+    onClick: true,
+    // disabled: true,
   },
 ];
 
