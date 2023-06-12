@@ -9,6 +9,7 @@ import { useStateContext } from "./context";
 
 const App = () => {
   const { Colors } = useStateContext();
+  
   // console.log(Colors);
   
   return (

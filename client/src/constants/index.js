@@ -55,9 +55,9 @@ export const navlinks = [
 ];
 
 export const dark = {
-  primary: "#191919",
-  secondary: "#1f1f1f",
-  selected: "#292929",
+  primary: "#101010",
+  secondary: "#1a1a1a",
+  selected: "#242424",
   hover: "#F2F2F2",
   white: "white",
   black: "#000",

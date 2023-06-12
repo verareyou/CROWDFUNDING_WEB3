@@ -1,6 +1,5 @@
 import React, { useContext, createContext } from "react";
-import { useAddress, useContract, useMetamask, useContractWrite, useContractRead,
- } from '@thirdweb-dev/react';
+import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
 
 //  import { useMetamaskDisconnect } from "dapp-wallets";
 import { ethers } from "ethers";
@@ -60,6 +59,7 @@ export const StateContextProvider = ({ children }) => {
   );
 
   let address = useAddress();
+  let profilePic = "https://avatars.dicebear.com/api/avataaars/" + address + ".svg";
 
   // disconnect metamask
   const disconnect = () => {
@@ -124,10 +124,11 @@ export const StateContextProvider = ({ children }) => {
 
   const getDonations = async (pId) => {
     const donations = await contract.call("getDonators", pId);
+    
     const numOfDonations = donations[0].length;
     
     const parsedDonations = [];
-
+    
     for (let i = 0; i < numOfDonations; i++) {
       parsedDonations.push({
         donator: donations[0][i],
@@ -158,6 +159,7 @@ export const StateContextProvider = ({ children }) => {
         getCampaigns,
         getUserCampaigns,
         createCampaign: publishCampaign,
+        profilePic,
       }}
     >
       {children}

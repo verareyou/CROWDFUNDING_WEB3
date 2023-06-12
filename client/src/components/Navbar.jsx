@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { CustomBtn } from "./";
-import { logo, menu, 
+import { logo, menu,
+  user, 
   search,
    thirdweb } from "../assets";
 import { navlinks } from "../constants";
@@ -14,7 +15,7 @@ const Navbar = () => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   // const [address, setAddress] = useState("");
   const { connect, address, Colors,
-     setSearch, disconnect
+     setSearch, profilePic
   } = useStateContext();
   // console.log("address : " + search); 
 
@@ -73,16 +74,16 @@ const Navbar = () => {
 
           <div
           style={{ background: Colors.secondary }}
-          className=" h-[52px] w-[52px] rounded-full flex justify-center items-center cursor-pointer "
+          className=" h-[52px] w-[52px] rounded-full overflow-hidden flex justify-center items-center cursor-pointer "
         >
           <img
-            src={thirdweb}
+            src={address ? profilePic : user}
             onClick={() => {
               navigate("profile");
               setIsActive("profile");
             }}
             alt="user"
-            className=" w-[60%] h-[60%] object-contain "
+            className={" w-[100%] h-[100%] object-contain "}
           />
         </div>
         

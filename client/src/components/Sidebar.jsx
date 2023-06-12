@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { logo, sun } from "../assets";
@@ -7,17 +7,16 @@ import { useStateContext } from "../context";
 // const { Colors } = useStateContext();
 
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => {
+
   const { Colors } = useStateContext();
-  const insec = Colors.insec;
+
   return (
     <div
+    
       style={{
         background: isActive && isActive === name && `${Colors.selected}`,
-        // border:
-        //   isActive && isActive === name
-        //     ? `1px solid ${Colors.border}`
-        //     : `1px solid ${Colors.lightBorder}`,
       }}
+
       className={` w-[48px] h-[48px] rounded-full flex justify-center items-center 
       ${!disabled &&
         `${Colors.text === "#fff" ? "hover:bg-[#282828]" : "hover:bg-[#ccc]"}
@@ -45,7 +44,7 @@ const Sidebar = () => {
   const { changeTheme } = useStateContext();
   const { Colors,disconnect } = useStateContext();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const url = window.location.href;
     const urlArr = url.split("/");
     const lastUrl = urlArr[urlArr.length - 1];
@@ -55,7 +54,7 @@ const Sidebar = () => {
 
   return (
     <div className="flex flex-col justify-center items-center sticky top-5 h-[93vh] ">
-      <Link to="/">
+      {/* <Link to="/">
         <Icon
           styles={` w-[52px] h-[52px] ${
             Colors.text === "#fff" ? "bg-[#222]" : "bg-[#f2f2f2]"
@@ -64,7 +63,7 @@ const Sidebar = () => {
           }  `}
           imgUrl={logo}
         />
-      </Link>
+      </Link> */}
 
       <div
         style={{

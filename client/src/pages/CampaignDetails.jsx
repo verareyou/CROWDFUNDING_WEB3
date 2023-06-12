@@ -20,6 +20,7 @@ const CampaignDetails = () => {
     const donations = await getDonations(state.pId);
     setDonators(donations);
     setIsLoading(false);
+    console.log(donations); 
     setTimeout(() => {
       setIsLoaded(false);
     }, 100);
@@ -158,9 +159,9 @@ const CampaignDetails = () => {
               >
                 <img
                   style={{
-                    filter: Colors.text === "#fff" ? "invert(1)" : "invert(0)",
+                    filter: Colors.text === "#fff" ? "invert(0)" : "invert(0)",
                   }}
-                  src={user}
+                  src={`https://avatars.dicebear.com/api/avataaars/${state.owner}.svg`}
                   alt=""
                   className="rounded-full object-contain "
                 />
@@ -191,7 +192,7 @@ const CampaignDetails = () => {
           <div>
             <h4 className=" font-semibold text-[18px] uppercase ">Donators</h4>
 
-            <div className="mt-[20px] flex flex-col gap-4 ">
+            <div className="mt-[20px] flex flex-row gap-4 ">
               
               {donators.length > 0 ? (
                 donators.map((donator, index) => (
@@ -201,16 +202,22 @@ const CampaignDetails = () => {
                       backgroundColor:
                         Colors.text === "#fff" ? "#22282a" : "#fff",
                     }}
-                    className=" flex sm:w-[500px] justify-between px-2 pt-[1px] rounded-lg gap-4 "
+                    className=" flex flex-col items-center justify-center rounded-[20px] gap-2 p-2 "
                   >
-                    <p
+                    {/* <p
                       style={{
                         color: Colors.text === "#fff" ? "#fff" : "#333",
                       }}
                       className=" flex-1 overflow-clip font-normal text-[16px] leading-[26px] break-11 "
                     >
                       {donator.donator}
-                    </p>
+                    </p> */}
+                    <img 
+                      src={`https://avatars.dicebear.com/api/avataaars/${donator.donator}.svg`}
+                      alt=""
+                      className="rounded-full object-contain w-[40px] h-[40px] "
+                    />
+
                     <p
                       style={{
                         color: Colors.lighttext,

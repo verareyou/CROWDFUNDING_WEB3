@@ -11,6 +11,12 @@ const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
     // navigate(`/campaign`);
     navigate(`/campaign/${campaign.title}`, { state: campaign });
   };
+
+  const getPic = (owner) => {
+    let profilePic = "https://avatars.dicebear.com/api/avataaars/" + owner + ".svg";
+    return profilePic;
+  }
+
   return (
     <div>
       <h1 className="text-[18px] text-left ">
@@ -42,8 +48,10 @@ const DisplayCampaigns = ({ isLoading, title, campaigns }) => {
             <FundCard
               key={campaign.pId}
               {...campaign}
+              profilePic={getPic(campaign.owner)}
               handleClick={() => {
                 handleNavigate(campaign);
+                // console.log(campaign);
               }}
             />
             )
